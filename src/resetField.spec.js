@@ -2,6 +2,7 @@ describe('amResetField', function() {
   'use strict';
 
   var scope, $compile;
+  var validElement = '<input type="text" ng-model="foo" am-reset-field />';
 
   beforeEach(module('am.resetField'));
   beforeEach(inject(function(_$rootScope_, _$compile_) {
@@ -42,7 +43,7 @@ describe('amResetField', function() {
     });
 
     it('should append the icon element as a sibling', function() {
-      var element = $compile('<input type="text" ng-model="foo" am-reset-field />')(scope);
+      var element = $compile(validElement)(scope);
       expect(element.next().hasClass('fa')).toBeTruthy();
     });
 
@@ -50,21 +51,21 @@ describe('amResetField', function() {
 
   describe('icon visibility', function() {
     it('should be hidden on compile', function() {
-      var element = $compile('<input type="text" ng-model="foo" am-reset-field />')(scope);
+      var element = $compile(validElement)(scope);
       scope.$digest();
       expect(element.isolateScope().enabled).toBeFalsy();
       expect(element.next().hasClass('ng-hide')).toBeTruthy();
     });
 
     it('should be visible when text exists in input and focus is gained', function() {
-      var element = $compile('<input type="text" ng-model="foo" am-reset-field />')(scope);
+      var element = $compile(validElement)(scope);
       element.val('foo').triggerHandler('focus');
       expect(element.isolateScope().enabled).toBeTruthy();
       expect(element.next().hasClass('ng-hide')).toBeFalsy();
     });
 
     it('should be hidden when text exists in input and focus is lost', function() {
-      var element = $compile('<input type="text" ng-model="foo" am-reset-field />')(scope);
+      var element = $compile(validElement)(scope);
       element.val('foo').triggerHandler('focus');
       element.triggerHandler('blur');
       expect(element.isolateScope().enabled).toBeFalsy();
@@ -72,7 +73,7 @@ describe('amResetField', function() {
     });
 
     it('should be hidden when text is completely deleted in input', function() {
-      var element = $compile('<input type="text" ng-model="foo" am-reset-field />')(scope);
+      var element = $compile(validElement)(scope);
       element.val('foo').triggerHandler('focus');
       element.val(null).triggerHandler('focus');
       expect(element.isolateScope().enabled).toBeFalsy();
@@ -80,15 +81,15 @@ describe('amResetField', function() {
     });
   });
 
-  xdescribe('clicking icon', function() {
+  describe('clicking icon', function() {
     it('should clear the text content and reset the model', function() {
-      var element = $compile('<input type="text" ng-model="foo" am-reset-field />')(scope);
+      var element = $compile(validElement)(scope);
 
       scope.$apply('foo = "foo"');
       expect(element.val()).toBe('foo');
 
       spyOn(element.isolateScope(), 'reset').andCallThrough();
-      element.next().triggerHandler('click');
+      element.next().triggerHandler('mousedown');
 
       expect(element.val()).toBe('');
       expect(element.scope().foo).toBe(null);
