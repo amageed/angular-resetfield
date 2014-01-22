@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="bower_components/animate.css/animate.min.css" rel="stylesheet">
+  <link href="src/css/resetField.css" rel="stylesheet">
+  <meta charset=utf-8 />
+  <title>Angular Reset Field</title>
+</head>
+<body>
+  <div ng-controller="FirstCtrl">
+    <p>{{firstName}}</p>
+    <label>FirstName: <input ng-model="firstName" am-reset-field type="text" /></label>
+    <p>{{lastName}}</p>
+    <label>LastName: <input ng-model="lastName" am-reset-field type="text" /></label>
+  </div>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="src/resetField.js"></script>
+  <script>
+    angular.module('ResetApp', ['ngAnimate', 'am.resetField'])
+      .controller('FirstCtrl', function($scope){});
+    angular.bootstrap(document, ['ResetApp']);
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+/* prevent text from appearing underneath the icon */
+input[am-reset-field] {
+  padding-right: 19px;
+}
+
+/* hide the built-in IE10+ clear field icon */
+input[am-reset-field]::-ms-clear {
+  display: none;
+}
+/* hide cancel icon for search type */
+input[am-reset-field]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+/* icon styles */
+input[am-reset-field] + .fa {
+  position: relative;
+  right: 19px;
+  color: #C0C0C0;
+  cursor: default;
+}
+
+/* animations for ngAnimate */
+input[am-reset-field] + .fa.ng-hide-add {
+  display:inline!important;
+  -webkit-animation: 0.3s fadeOut;
+  -moz-animation: 0.3s fadeOut;
+  -ms-animation: 0.3s fadeOut;
+  animation: 0.3s fadeOut;
+}
+input[am-reset-field] + .fa.ng-hide-remove {
+  -webkit-animation: 0.5s fadeIn;
+  -moz-animation: 0.5s fadeIn;
+  -ms-animation: 0.5s fadeIn;
+  animation: 0.5s fadeIn;
+}
