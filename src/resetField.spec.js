@@ -92,7 +92,7 @@ describe('amResetField', function() {
       element.next().triggerHandler('mousedown');
 
       expect(element.val()).toBe('');
-      expect(element.scope().foo).toBe(null);
+      expect(element.scope().foo).toBe('');
       expect(element.isolateScope().reset).toHaveBeenCalled();
     });
   });
