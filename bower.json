@@ -5,7 +5,10 @@
     "Ahmad Mageed"
   ],
   "description": "Angular input reset directive",
-  "main": "resetField.js",
+  "main": [
+    "./src/resetField.js",
+    "./src/css/resetField.css"
+   ],
   "license": "MIT",
   "homepage": "https://github.com/amageed/angular-resetfield",
   "private": true,
