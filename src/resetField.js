@@ -17,7 +17,7 @@ angular.module('am.resetField', []).directive('amResetField', ['$compile', '$tim
       el.after(template);
 
       scope.reset = function() {
-        ctrl.$setViewValue(null);
+        ctrl.$setViewValue('');
         ctrl.$render();
         $timeout(function() {
             el[0].focus();

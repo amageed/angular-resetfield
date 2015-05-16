@@ -88,11 +88,11 @@ describe('amResetField', function() {
       scope.$apply('foo = "foo"');
       expect(element.val()).toBe('foo');
 
-      spyOn(element.isolateScope(), 'reset').andCallThrough();
+      spyOn(element.isolateScope(), 'reset').and.callThrough();
       element.next().triggerHandler('mousedown');
 
       expect(element.val()).toBe('');
-      expect(element.scope().foo).toBe(null);
+      expect(element.scope().foo).toBe('');
       expect(element.isolateScope().reset).toHaveBeenCalled();
     });
   });

@@ -1,0 +1,13 @@
+node_modules/
+npm-debug.log
+
+bower_components/
+
+build/
+
+# temp files
+.directory
+.DS_Store
+Thumbs.db
+
+.kateproject.d/
